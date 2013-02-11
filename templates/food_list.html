@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Food Point Watcher - All Ingredients List</title>
+	</head>
+	
+	<style type="text/css">
+		body {
+			font-family: sans-serif;
+			width: 800px;
+			margin: 0 auto;
+			padding: 10px;
+		}
+
+		.error {
+			color: red
+		}
+
+		label {
+			display: block;
+			font-size: 20px;
+		}
+
+		input[type=text] {
+			width: 400px;
+			font-size: 20px;
+			padding: 2px;
+		}
+	
+		textarea {
+			width: 400px;
+			height: 200px;
+			font-size: 17px;
+			font-family: monospace;
+		}
+		input[type=submit] {
+			font-size: 24px;
+		}
+		hr {
+			margin: 20px auto;
+		}
+
+		.art + .art {
+			margin-top: 20px;
+		}
+		.art-title {
+			font-weight: bold;
+			font-size: 20px;
+		}
+		.art-body {
+			margin: 0;
+			font-size: 17px;
+		}
+	</style>
+
+	<body>
+		<h1>All Food List</h1>
+
+		<form method="post">
+			<label>
+				<div>Name</div>
+				<input type="text" name="name" value="{{name}}">
+			</label>
+			<label>
+				<div>Amount (Number Only)</div>
+				<input type="text" name="amount" value="{{amount}}">
+			</label>
+			<label>
+				<div>Unit (ex. lbs, oz, tsp)</div>
+				<input type="text" name="unit" value="{{unit}}">
+			</label>
+			<label>
+				<div>Points</div>
+				<input type="text" name="points" value="{{points}}">
+			</label>
+
+			<div class="error">{{error}}</div>
+
+			<input type="submit">
+		</form>
+		<hr>
+		<table border="1" cellpadding="2">
+			<tr><th>Name</th><th>Amount</th><th>Unit</th><th>Points</th></tr>
+		{% for ingredient in ingredients %}
+			<tr><td>{{ingredient.name}}</td><td>{{ingredient.base_amount}}</td><td>{{ingredient.unit}}</td><td>{{ingredient.base_points}}</td></tr>
+		{% endfor %}
+		</table>
+	</body>
+</html>
