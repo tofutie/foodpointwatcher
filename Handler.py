@@ -1,4 +1,10 @@
+# Base Handler to be imported by all other web handlers
+# Provides render functions for template use
+# Provides write function for easy writing to screen
+# Create during Udacity.com Web App Course
+
 import webapp2
+import os
 import jinja2
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
