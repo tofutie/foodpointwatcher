@@ -7,10 +7,10 @@ class EditIngredientPage(Handler):
 	def get(self):
 		name = self.request.get("name")
 		ingredient = getIngredientByName(name)
-		ingredient = ingredient[0]
-		if not ingredient:
+		if ingredient.count() == 0:
 			self.write("There has been an error...")
 		else:
+			ingredient = ingredient[0]
 			self.render("ingredient.html", ingredient=ingredient)
 	
 	def post(self):
@@ -18,9 +18,8 @@ class EditIngredientPage(Handler):
 		base_amount = self.request.get("amount")
 		unit = self.request.get("unit")
 		base_points = self.request.get("points")
-		
 		ingredient = getIngredientByName(name)
-		if not ingredient:
+		if ingredient.count() == 0:
 			self.write("That ingredient does not exist yet. Please go <a href='/ingredient_list'>here</a> to add it.")
 		else:
 			ingredient = ingredient[0]
