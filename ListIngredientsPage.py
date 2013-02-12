@@ -2,6 +2,34 @@ from Handler import Handler
 from Ingredient import *
 from fractions import Fraction
 
+
+class EditIngredientPage(Handler):
+	def get(self):
+		name = self.request.get("name")
+		ingredient = getIngredientByName(name)
+		ingredient = ingredient[0]
+		if not ingredient:
+			self.write("There has been an error...")
+		else:
+			self.render("ingredient.html", ingredient=ingredient)
+	
+	def post(self):
+		name = self.request.get("name")
+		base_amount = self.request.get("amount")
+		unit = self.request.get("unit")
+		base_points = self.request.get("points")
+		
+		ingredient = getIngredientByName(name)
+		if not ingredient:
+			self.write("That ingredient does not exist yet. Please go <a href='/ingredient_list'>here</a> to add it.")
+		else:
+			ingredient = ingredient[0]
+			ingredient.base_amount = round(float(sum(Fraction(s) for s in base_amount.split())),2)
+			ingredient.unit = unit
+			ingredient.base_points = int(base_points)
+			ingredient.put()
+			self.redirect('/ingredient_list')
+
 class ListIngredientsPage(Handler):
 	def render_list(self, name="", base_amount="", unit="", base_points="", error=""):
 		ingredients = getAllIngredients()

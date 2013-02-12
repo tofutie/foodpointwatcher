@@ -81,9 +81,9 @@
 		</form>
 		<hr>
 		<table border="1" cellpadding="2">
-			<tr><th>Name</th><th>Amount</th><th>Unit</th><th>Points</th></tr>
+			<tr><th>Name</th><th>Amount</th><th>Unit</th><th>Points</th><th>Edit</th></tr>
 		{% for ingredient in ingredients %}
-			<tr><td>{{ingredient.name}}</td><td>{{ingredient.base_amount}}</td><td>{{ingredient.unit}}</td><td>{{ingredient.base_points}}</td></tr>
+			<tr><td>{{ingredient.name}}</td><td>{{ingredient.base_amount}}</td><td>{{ingredient.unit}}</td><td>{{ingredient.base_points}}</td><td><a href="/ingredient?name={{ingredient.name}}">Edit</a></td></tr>
 		{% endfor %}
 		</table>
 	</body>
