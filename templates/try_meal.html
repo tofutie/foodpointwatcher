@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Food Point Watcher - Edit Ingredient</title>
+		<script src="/static/jquery.js"></script>
+		<script type='text/javascript'>
+			$(document).ready(function() {
+				$('#add_ingredient').click(function (evt) {
+					var c = $("#hidden_count").val();
+					var newInput = document.createElement('input');
+					newInput.name="ingredient"+c;
+					$("#ingredients").append("<label><div>Ingredient Name:</div><input name='ingredient"+c+"' type='text'></label>");
+					c = parseInt(c)+1;
+					$("#hidden_count").val(c);
+				});
+			});
+		
+		</script>
+	</head>
+	
+	<style type="text/css">
+		body {
+			font-family: sans-serif;
+			width: 800px;
+			margin: 0 auto;
+			padding: 10px;
+		}
+
+		.error {
+			color: red
+		}
+
+		label {
+			display: block;
+			font-size: 20px;
+		}
+
+		input[type=text] {
+			width: 400px;
+			font-size: 20px;
+			padding: 2px;
+		}
+	
+		textarea {
+			width: 400px;
+			height: 200px;
+			font-size: 17px;
+			font-family: monospace;
+		}
+		input[type=submit] {
+			font-size: 24px;
+		}
+		hr {
+			margin: 20px auto;
+		}
+
+	</style>
+	
+	<body>
+		<h1>Try Out A Meal</h1>
+		<form method="post">
+			<div id="ingredients"></div>
+			<img id="add_ingredient" src="/static/images/plusButton.png" /> Add Ingredient<br>
+			<input id="hidden_count" type="hidden" name="count" value="0" />
+			<input type="submit">
+		</form>
+
+			
+
+	</body>
+</html>

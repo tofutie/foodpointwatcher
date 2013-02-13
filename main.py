@@ -5,6 +5,7 @@ from LogIn import LoginPage
 from LogIn import LogoutPage
 from ListIngredientsPage import ListIngredientsPage
 from ListIngredientsPage import EditIngredientPage
+from TryMeal import TryMealPage
 
 
 app = webapp2.WSGIApplication([
@@ -13,5 +14,6 @@ app = webapp2.WSGIApplication([
     ('/login', LoginPage),
     ('/logout', LogoutPage),
     ('/ingredient_list', ListIngredientsPage),
-    ('/ingredient', EditIngredientPage)
+    ('/ingredient', EditIngredientPage),
+    ('/trymeal', TryMealPage)
 ], debug=True)
